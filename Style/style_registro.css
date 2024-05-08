@@ -1,0 +1,101 @@
+/* Resetear los estilos por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d8a8ff; /* Morado claro */
+    color: #ffffff;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Contenedor principal */
+.main-container {
+    max-width: 500px; /* Ajustado para que coincida con el ancho del formulario */
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff; /* Cambiado al blanco */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los encabezados */
+h1 {
+    text-align: center; /* Cambiado a h1 para que coincida con el HTML */
+    margin-bottom: 20px;
+    color: #8a2be2; /* Morado medio */
+}
+
+h3 {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+/* Estilo para los campos de entrada */
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="tel"],
+input[type="email"], /* Añadido para incluir el campo de correo electrónico */
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #8a2be2; /* Morado medio */
+    border-radius: 3px;
+}
+
+/* Estilo para los botones */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.button-login,
+.button-singup,
+.button-google,
+#show-password {
+    background-color: #8a2be2; /* Morado medio */
+    color: #ffffff;
+}
+
+.button-singup {
+    background-color: #b83b5e; /* Morado oscuro */
+}
+
+.button-google {
+    background-color: #6a1b9a; /* Morado oscuro */
+}
+
+/* Estilo para el botón de mostrar contraseña */
+#show-password {
+    background-color: #6a1b9a; /* Morado oscuro */
+}
+
+/* Estilo para los enlaces */
+.custom-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.custom-link:hover {
+    color: #ffffff;
+}
