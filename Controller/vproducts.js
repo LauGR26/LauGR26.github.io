@@ -14,9 +14,6 @@ async function cargar(cedula = '') {
                     <td>${data.nombres}</td>
                     <td>${data.apellidos}</td>
                     <td>${data.fecha}</td>
-                    <td>${data.estado}</td>
-                    <td>${data.rh}</td>
-                    <td>${data.genero}</td>
                     <td>${data.telefono}</td>
                     <td>${data.direccion}</td>
                     <td>${data.email}</td>
@@ -44,10 +41,6 @@ async function cargar(cedula = '') {
             document.getElementById('userIdToUpdate').value = button.getAttribute('data-id'); // Asegúrate de tener un input oculto con este ID
             document.getElementById('updNombres').value = button.getAttribute('data-nombres');
             document.getElementById('updApellidos').value = button.getAttribute('data-apellidos');
-            document.getElementById('updFecha').value = button.getAttribute('data-fecha');
-            document.getElementById('updEstado').value = button.getAttribute('data-estado');
-            document.getElementById('updRh').value = button.getAttribute('data-rh');
-            document.getElementById('updGenero').value = button.getAttribute('data-genero');
             document.getElementById('updTelefono').value = button.getAttribute('data-telefono');
             document.getElementById('updDireccion').value = button.getAttribute('data-direccion');
         });
@@ -83,14 +76,11 @@ document.getElementById('updateUserForm').addEventListener('submit', async (even
     const nombres = document.getElementById('updNombres').value;
     const apellidos = document.getElementById('updApellidos').value;
     const fecha = document.getElementById('updFecha').value;
-    const estado = document.getElementById('updEstado').value;
-    const rh = document.getElementById('updRh').value;
-    const genero = document.getElementById('updGenero').value;
     const telefono = document.getElementById('updTelefono').value;
     const direccion = document.getElementById('updDireccion').value;
 
     try {
-        await actualizarUsuario(cedula, { nombres, apellidos, fecha, estado, rh, genero, telefono, direccion });
+        await actualizarUsuario(cedula, { nombres, apellidos, fecha, telefono, direccion });
         alert('Usuario actualizado correctamente');
         location.reload();
     } catch (error) {

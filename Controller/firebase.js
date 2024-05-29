@@ -110,15 +110,12 @@ export async function EliminarUsuario() {
 // Métodos de Firestore Database
 
 // Agregar datos con id
-export const setregister = (nombres, apellidos, fecha, cedula, estado, rh, genero, telefono, direccion, email, tipoCuenta) => 
+export const setregister = (nombres, apellidos, fecha, cedula, telefono, direccion, email, tipoCuenta) => 
   setDoc(doc(db, "Usuarios", cedula), {  
     nombres, 
     apellidos, 
     fecha, 
     cedula, 
-    estado, 
-    rh, 
-    genero, 
     telefono, 
     direccion, 
     email, 
@@ -130,15 +127,12 @@ export const Getregister = (cedula) =>
   getDoc(doc(db, "Usuarios", cedula));
 
 // Agregar Datos
-export const addregister = (nombres, apellidos, fecha, cedula, estado, rh, genero, telefono, direccion, email, tipoCuenta) =>
+export const addregister = (nombres, apellidos, fecha, cedula, telefono, direccion, email, tipoCuenta) =>
   addDoc(collection(db, "Usuarios"), {
     nombre: nombres,
     apellido: apellidos,
     fecha: fecha,
     cedula: cedula,
-    estado: estado,
-    rh: rh,
-    genero: genero,
     telefono: telefono,
     direccion: direccion,
     email: email,

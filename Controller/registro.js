@@ -11,9 +11,6 @@ async function register() {
     const apellidos = formulario['edtape'].value;
     const fecha = formulario['edtfecha'].value;
     const cedula = formulario['edtcc'].value;
-    const estado = formulario['edtstc'].value;
-    const rh = formulario['edtrh'].value;
-    const genero = formulario['edtgnr'].value;
     const telefono = formulario['edttlf'].value;
     const direccion = formulario['edtdirec'].value;
     const email = formulario['edtemail'].value;
@@ -56,7 +53,7 @@ async function register() {
     try {
         const verificar = await registerauth(email, psw);
         
-        await setregister(nombres, apellidos, fecha, cedula, estado, rh, genero, telefono, direccion, email, accountType);
+        await setregister(nombres, apellidos, fecha, cedula, telefono, direccion, email, accountType);
 
         await verification();
 
