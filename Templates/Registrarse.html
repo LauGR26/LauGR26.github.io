@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="/Style/style_Registrarse.css">
 
-    <title>REGISTRARSE</title>
+    <title>Database Registro</title>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-header">
-                <h1 class="text-center">REGISTRARSE</h1>
+                <h1 class="text-center">Registro de Usuario</h1>
               </div>
               <div class="card-body">
                 <form id="LogUp-Form">
@@ -35,6 +35,35 @@
                     <div class="form-group">
                         <h3>Cédula</h3>
                         <input type="text" id="edtcc" class="form-control" placeholder="Ingresa tu número de cédula" required>
+                    </div>
+                    <div class="form-group">
+                        <h3>Estado Civil</h3>
+                        <input type="text" id="edtstc" class="form-control" placeholder="Ingresa tu estado civil" required>
+                    </div>
+                    <div class="form-group">
+                        <h3>Tipo de Sangre [RH]</h3>
+                        <select id="edtrh" class="form-control" required>
+                            <option value="" selected disabled>Selecciona tu tipo de sangre [RH]</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="">Ninguno</option> <!-- Nueva opción vacía -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <h3>Género</h3>
+                        <select id="edtgnr" class="form-control" required>
+                            <option value="" selected disabled>Selecciona tu género</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Otro">Otro</option>
+                            <option value="">Ninguno</option> <!-- Nueva opción vacía -->
+                        </select>
                     </div>
                     <div class="form-group">
                         <h3>Teléfono</h3>
@@ -74,6 +103,10 @@
                             <option value="administrador">Cuenta de Administrador</option>
                         </select>
                     </div>
+                    <div class="form-group d-none" id="adminPasswordGroup">
+                        <h3>Contraseña de Administrador</h3>
+                        <input type="text" id="adminPassword" class="form-control" placeholder="Ingresa la contraseña de administrador" disabled>
+                    </div>
 
                     <button id="rgsbtn" class="btn btn-primary" type="submit">Registrarse</button> <br>
                     <button type="button" id="show-password" class="btn btn-secondary">Mostrar contraseña</button> <br>
@@ -91,6 +124,7 @@
     <script type="module" src="/Controller/add_users.js"></script>
 
     <script>
+
         const telefonoInput = document.getElementById('edttlf');
 
         telefonoInput.addEventListener('input', function() {
@@ -101,6 +135,21 @@
 
         cedulaInput.addEventListener('input', function() {
             this.value = this.value.replace(/[^\d]/g, '');
+        });
+
+        const accountTypeSelect = document.getElementById('accountType');
+
+        const adminPasswordInput = document.getElementById('adminPassword');
+
+        accountTypeSelect.addEventListener('change', function() {
+            if (this.value === 'administrador') {
+                adminPasswordInput.removeAttribute('disabled');
+                adminPasswordInput.setAttribute('required', 'required');
+            } else {
+                adminPasswordInput.setAttribute('disabled', 'disabled');
+                adminPasswordInput.removeAttribute('required');
+                adminPasswordInput.value = ''; 
+            }
         });
     </script>
 
