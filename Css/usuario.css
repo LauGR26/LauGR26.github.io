@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('../Resources/Img/fondo.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: rgba(15, 15, 15, 0.9); /* Fondo gris oscuro semi-transparente */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(169, 83, 196, 0.774); /* Sombra en tono morado claro */
+    border-radius: 10px;
+    width: 350px;
+    text-align: center;
+    border: 1px solid #AB05F2; /* Borde en morado claro */
+}
+
+.login-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #FFFFFF; /* Texto en blanco para mayor contraste */
+    font-size: 22px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #AB05F2; /* Borde en morado claro */
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #FFFFFF; /* Fondo en morado oscuro para los campos de entrada */
+    color: #050505; /* Texto en blanco para los campos de entrada */
+}
+
+input[type="text"]::placeholder {
+    color: #59289e; /* Tono morado oscuro para el texto del placeholder */
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 6px;
+    background-color: #AB05F2; /* Tono morado claro */
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #4c2f75; /* Tono morado medio para hover */
+    transform: scale(1.05);
+}
+
+.btn-primary {
+    background-color: #AB05F2; /* Tono morado claro */
+    border-color: #AB05F2; /* Tono morado claro */
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #4c2f75; /* Tono morado medio para hover */
+    border-color: #4c2f75; /* Tono morado medio para hover */
+    transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        width: 90%;
+    }
+
+    input[type="submit"],
+    input[type="text"] {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
