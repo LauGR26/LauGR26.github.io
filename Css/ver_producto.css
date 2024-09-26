@@ -1,0 +1,116 @@
+/* Fondo del body con imagen de fondo */
+body {
+    font-family: Arial, sans-serif;
+    background: url('../Resources/Img/fondo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Personalización de la tarjeta del formulario */
+.card {
+    background-color: rgba(15, 15, 15, 0.9); /* Fondo gris oscuro semi-transparente */
+    box-shadow: 0 4px 8px rgba(169, 83, 196, 0.774); /* Sombra en tono morado claro */
+    border-radius: 10px;
+    border: 1px solid #AB05F2; /* Borde en morado claro */
+}
+
+/* Estilos del título */
+.card-title {
+    color: #fafafa; /* Color claro */
+    text-align: center;
+}
+
+/* Alinear los labels a la izquierda */
+label {
+    text-align: left;
+    display: block; /* Asegura que el label ocupe toda la línea */
+    margin-bottom: 5px; /* Espaciado inferior para separación visual */
+}
+
+/* Estilo de la tabla */
+.table {
+    color: #ffffff; /* Color de texto blanco en la tabla */
+    margin-top: 20px; /* Espaciado superior */
+}
+
+/* Estilo del encabezado de la tabla */
+.table-dark th {
+    background-color: rgba(169, 83, 196, 0.7); /* Color de fondo de encabezado morado claro */
+    font-weight: bold; /* Negrita */
+}
+
+/* Estilo de las celdas de la tabla */
+.table-dark td {
+    border-top: 1px solid #6c757d; /* Bordes superiores para las celdas */
+}
+
+/* Estilos para los inputs */
+.form-control {
+    border: 1px solid #AB05F2; /* Borde morado claro */
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
+    color: #111626; /* Texto oscuro */
+}
+
+.form-control::placeholder {
+    color: #4c2f75; /* Tono morado oscuro para el placeholder */
+}
+
+/* Estilos para los botones */
+.btn-success {
+    background-color: #AB05F2; /* Tono morado claro */
+    border: none;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-success:hover {
+    background-color: #4c2f75; /* Tono morado medio para hover */
+    transform: scale(1.05);
+}
+
+/* Botón de volver */
+.btn-primary {
+    background-color: #AB05F2; /* Tono morado oscuro */
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #4c2f75; /* Tono más oscuro */
+    transform: scale(1.05);
+}
+
+/* Estilo del mensaje de carga */
+#cargando {
+    color: #ffffff; /* Color de texto blanco */
+    font-size: 1.2rem; /* Tamaño de fuente del mensaje de carga */
+    padding: 10px; /* Espaciado alrededor del texto */
+    background-color: rgba(169, 83, 196, 0.7); /* Color de fondo gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Espaciado adicional para el botón */
+.btn-block {
+    margin-top: 20px; /* Espaciado superior para el botón */
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 600px) {
+    .card {
+        width: 90%;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+}
