@@ -23,9 +23,19 @@ import {
     measurementId: "G-GXK61LVEWH"
   };
 
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    query,   
+    orderBy  
+  } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
+
 //Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 //Metodo de autenticaciòn de usuario
 export const ctrlaccessuser=(email,password)=>
@@ -63,4 +73,37 @@ export const ctrlaccessuser=(email,password)=>
   export function getCurrentUser() {
     const user = auth.currentUser;
     return user ? { email: user.email } : null;
+}
+
+// Función para agregar un registro a Firestore
+export const Addregister = async (cod, name, desc, cant) => {
+  try {
+    const docRef = await addDoc(collection(db, "productos"), {
+      codigo: cod,
+      nombre: name,
+      descripcion: desc,
+      cantidad: cant
+    });
+    console.log("Documento escrito con ID: ", docRef.id);
+    return docRef.id; // Retornar el ID del documento registrado
+  } catch (error) {
+    console.error("Error al agregar el documento: ", error);
+    throw error; // Lanzar el error para manejarlo en el registro
+  }
+};
+
+// Función para obtener productos de Firestore
+export const obtenerProductos = async () => {
+  try {
+      const productosCollection = collection(db, "productos");
+      const productosSnapshot = await getDocs(productosCollection);
+      const productosList = productosSnapshot.docs.map(doc => ({
+          id: doc.id, // Agregar ID del documento
+          ...doc.data() // Obtener datos del documento
+      }));
+      return productosList; // Retornar la lista de productos
+  } catch (error) {
+      console.error("Error al obtener productos: ", error);
+      throw error; // Lanzar el error para manejarlo
+  }
 }

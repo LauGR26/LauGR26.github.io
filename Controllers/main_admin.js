@@ -5,27 +5,25 @@ userstate()
 const crear = document.getElementById('btnCrear')
 const recuperar =document.getElementById('btnRecuperar')
 const cerrar = document.getElementById('btnCerrarSesion')
+const nuevoProducto = document.getElementById('btnNuevoProd')
+const verProducto = document.getElementById('btnVerProd')
 
 async function crearResgistro() {
     window.location.href = "../Templates/registro.html"
 }
-
-async function recuperarContraseña(){
-    const email = document.getElementById('edtemail').value
-
-    const verificar = verificationcod(email)
-    const validation = await verificar
-
-    .then((validation)=> {
-        alert("Reset verification succesfull"+email)
-        window.location.href="../Templates/main_admin.html"
-    })
-    .catch ((error)=>{
-        const errorCode = error.code;
-        const errorMessage = error.message;
-    })
-
+async function recuperarContraseña() {
+    window.location.href = "../Templates/recuperar_contraseña.html"
 }
+
+async function agregarProducto() {
+    window.location.href = "../Templates/nuevo_producto.html"
+}
+
+async function productos() {
+    window.location.href = "../Templates/ver_producto.html"
+    
+}
+
 
 async function sesion(){
     try {
@@ -41,7 +39,9 @@ async function sesion(){
 window.addEventListener('DOMContentLoaded',async()=>{
     cerrar.addEventListener('click', sesion)
     crear.addEventListener('click', crearResgistro)
-    recuperar.addEventListener('click',recuperarContraseña)
+    recuperar.addEventListener('click', recuperarContraseña)
+    nuevoProducto.addEventListener('click', agregarProducto)
+    verProducto.addEventListener('click',productos)
 })
 
 
