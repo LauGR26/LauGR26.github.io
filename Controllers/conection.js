@@ -25,11 +25,12 @@ import {
 
   import {
     getFirestore,
-    collection,
+    collection, 
     addDoc,
     getDocs,
-    query,   
-    orderBy  
+    setDoc,
+    getDoc,
+    doc 
   } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
 
 //Initialize Firebase
@@ -75,35 +76,26 @@ export const ctrlaccessuser=(email,password)=>
     return user ? { email: user.email } : null;
 }
 
-// Función para agregar un registro a Firestore
-export const Addregister = async (cod, name, desc, cant) => {
+//agregar datos
+export const Addregister=(codigo,nombre,descripcion,cantidad)=>
+  setDoc(doc(db, "productos", codigo), {
+    codigo,
+    nombre,
+    descripcion,
+    cantidad
+  });
+
+//Ver productos
+export const obtenerProductos = async () => {
   try {
-    const docRef = await addDoc(collection(db, "productos"), {
-      codigo: cod,
-      nombre: name,
-      descripcion: desc,
-      cantidad: cant
-    });
-    console.log("Documento escrito con ID: ", docRef.id);
-    return docRef.id; // Retornar el ID del documento registrado
+    const snapshot = await getDocs(collection(db, "productos"));
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   } catch (error) {
-    console.error("Error al agregar el documento: ", error);
-    throw error; // Lanzar el error para manejarlo en el registro
+    console.error("Error al obtener productos:", error);
+    throw error;
   }
 };
 
-// Función para obtener productos de Firestore
-export const obtenerProductos = async () => {
-  try {
-      const productosCollection = collection(db, "productos");
-      const productosSnapshot = await getDocs(productosCollection);
-      const productosList = productosSnapshot.docs.map(doc => ({
-          id: doc.id, // Agregar ID del documento
-          ...doc.data() // Obtener datos del documento
-      }));
-      return productosList; // Retornar la lista de productos
-  } catch (error) {
-      console.error("Error al obtener productos: ", error);
-      throw error; // Lanzar el error para manejarlo
-  }
-}
+//Leer registro especifico
+export const Getregister=(codigo)=> 
+  getDoc(doc(db, "productos", codigo))
