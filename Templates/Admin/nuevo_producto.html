@@ -23,6 +23,7 @@
                         <div class="form-group">
                             <label for="edtcodigo" class="text-light">Código</label>
                             <input type="number" class="form-control" id="edtcodigo" placeholder="Ingrese el código del producto" required>
+                            <button type="button" id="btnbuscar" class="btn btn-primary">Buscar</button>
                         </div>
 
                         <!-- Nombre del producto -->
@@ -51,6 +52,10 @@
                     </form>
                 </div>
             </div>
+            <br>
+            <article>
+                <div class="container1" id="cont"></div>
+            </article>
         </div>
     </div>
 
@@ -60,7 +65,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
     <!-- Incluir tu archivo JavaScript -->
-    <script type="module" src="../Controllers/conection.js"></script>
+    
     <script type="module" src="/Controllers/Admin/nuevo_producto.js"></script>
 </body>
 </html>
