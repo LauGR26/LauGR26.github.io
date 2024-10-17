@@ -33,15 +33,22 @@ import {
     doc 
   } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js';
 
+  import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL
+    } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js'
+
 //Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 //Metodo de autenticaciòn de usuario
 export const ctrlaccessuser=(email,password)=>
   signInWithEmailAndPassword(auth, email, password)
-  
   
   //observador
   export function userstate(){
@@ -77,12 +84,13 @@ export const ctrlaccessuser=(email,password)=>
 }
 
 //agregar datos
-export const Addregister=(codigo,nombre,descripcion,cantidad)=>
+export const Addregister=(codigo,nombre,descripcion,cantidad, urlimagen)=>
   setDoc(doc(db, "productos", codigo), {
     codigo,
     nombre,
     descripcion,
-    cantidad
+    cantidad,
+    urlimagen
   });
 
 //Ver productos
@@ -99,3 +107,11 @@ export const obtenerProductos = async () => {
 //Leer registro especifico
 export const Getregister=(codigo)=> 
   getDoc(doc(db, "productos", codigo))
+
+//Unidad de almacenamiento storage
+export const archivoimg = async (file, referencia)=>{
+  const storageref=ref(storage,`Paisimg/${referencia+file.name}`)
+  await uploadBytes(storageref, file);
+  const url = await getDownloadURL(storageref);
+  return url;
+  };
