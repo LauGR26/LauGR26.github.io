@@ -1,4 +1,4 @@
-import { userstate, Addregister,Getregister } from "../conection.js";
+import { userstate, Addregister,Getregister, archivoimg } from "../conection.js";
 
 userstate()
 const guardar = document.getElementById('btnregister');
@@ -10,17 +10,21 @@ async function registrar() {
     const name = document.getElementById('edtname').value;
     const desc = document.getElementById('edtdesc').value;
     const cant = document.getElementById('edtcantidad').value;
+    const avatar = document.getElementById('fileimg').files[0];
 
     // Validaciones de campos vacíos
-
-    
     if (!cod || !cod|| !name || !desc || !cant) {
         alert("Todos los campos son obligatorios.");
         return; 
     }
 
     try {
-        const verificar = await Addregister(cod,name,desc,cant)
+        let urlarchivo=''
+        if(avatar){
+        urlarchivo= await archivoimg(avatar,name)
+        }
+
+        const verificar = await Addregister(cod,name,desc,cant,urlarchivo)
         alert('Registro exitoso')
         window.location.href='nuevo_producto.html'
 
@@ -50,11 +54,12 @@ async function Ver(){
             let Html=""
             Html=`
                 <div class="card" style="width: 18rem;">
+                <img src="${docSnap.data().urlimagen}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" style="color: white;">${docSnap.data().nombre}</h5>
-                    <p class="card-text" style="color: white;">${docSnap.data().codigo}</p>
-                    <p class="card-text" style="color: white;">${docSnap.data().descripcion}</p>
-                    <p class="card-text" style="color: white;">${docSnap.data().cantidad}</p>
+                    <p class="card-text" style="color: white;">Código: ${docSnap.data().codigo}</p>
+                    <p class="card-text" style="color: white;">Descripción: ${docSnap.data().descripcion}</p>
+                    <p class="card-text" style="color: white;">Cantidad: ${docSnap.data().cantidad}</p>
                     <a href="#" class="btn btn-primary">Delete</a>
                     <a href="#" class="btn btn-primary">Update</a>
                 </div>
